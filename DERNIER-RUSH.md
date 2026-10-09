@@ -52,7 +52,8 @@ node --env-file=.env.production.local scripts/seed.mjs _ref/img
 node --env-file=.env.production.local scripts/create-admin.mjs <email-admin> "<mot de passe ≥ 10 caractères>"
 ```
 
-> Si `_ref/img` a disparu : relancer l'extraction depuis `FRS2026...pdf` (PyMuPDF), voir l'historique de la session.
+> Si `_ref/img` a disparu (il n'est pas dans git, tout comme le PDF) :
+> `pip install pymupdf && python scripts/extract-pdf.py "FRS2026...pdf" _ref/img`
 
 ## 3. Vercel (offre Hobby, gratuite)
 
