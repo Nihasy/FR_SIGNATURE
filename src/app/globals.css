@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* ── Charte FR Signature Auto ─────────────────────────────────
+   Noir profond, blanc cassé, rouge signature (badge « AUTO »).
+   Typographie : Archivo (axe de largeur) — condensé pour les titres. */
+:root {
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --ink-3: #1f1f1f;
+  --paper: #f3f1ec;
+  --paper-2: #e7e4dd;
+  --red: #ec1c24;
+  --red-dark: #c3141b;
+  --muted: #8a8780;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-dark: rgba(10, 10, 10, 0.14);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-dark: var(--line-dark);
+  --font-sans: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ease-brand: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+html {
+  background: var(--ink);
+  color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Titres condensés, style affiche */
+  .display {
+    font-stretch: 72%;
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .display-italic {
+    font-stretch: 72%;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  /* Petites capitales espacées (« PASSION · AUTHENTICITÉ · QUALITÉ ») */
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .container-x {
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 3rem;
+    }
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition:
+      background-color 0.3s var(--ease-brand),
+      color 0.3s var(--ease-brand),
+      border-color 0.3s var(--ease-brand);
+  }
+  .btn-red {
+    background: var(--red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: var(--red-dark);
+  }
+  .btn-ghost {
+    border: 1px solid currentColor;
+  }
+  .btn-ghost:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-brand);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* Apparition au défilement */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s var(--ease-brand),
+      transform 0.9s var(--ease-brand);
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @keyframes kenburns {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .kenburns {
+    animation: kenburns 9s var(--ease-brand) both;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fondu de l'image sur son aperçu flou */
+.img-fade {
+  transition: opacity 0.6s var(--ease-brand);
+}
