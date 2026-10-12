@@ -143,7 +143,7 @@ export default function AboutPage() {
       {/* Matériel & compétences */}
       <section className="container-x grid gap-12 py-24 md:grid-cols-12 md:py-32">
         <Reveal className="relative aspect-[3/2] overflow-hidden md:col-span-7">
-          <Image src={reportageImg} alt="Reportage lors d'un rassemblement moto" fill sizes="(min-width: 768px) 58vw, 100vw" className="object-cover" placeholder="blur" />
+          <Image src={reportageImg} alt="Le photographe de dos, t-shirt FR Signature Auto, au bord d'un circuit" fill sizes="(min-width: 768px) 58vw, 100vw" className="object-cover" placeholder="blur" />
         </Reveal>
         <div className="md:col-span-5">
           <p className="eyebrow text-paper/50">Matériel</p>
